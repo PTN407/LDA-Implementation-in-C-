@@ -46,21 +46,6 @@ template <class type, class prod>
         return std::make_pair(q, r.T());
     }
 template <class type, class prod>
-    nvector<double> eigen_value(matrix<type> a, prod inner_prod, int max_iter = 500, double tol = 1e-18){
-        auto qr = qr_decomposition(a, inner_prod);
-        matrix<double> previous(qr.first.N, qr.first.M);
-        matrix<double> eigen_vector = qr.first;
-        auto X = qr.second * qr.first;
-        for (int i = 0; i < max_iter; i++){
-            previous = qr.first;
-            X = qr.second * qr.first;
-            qr = qr_decomposition(X, inner_prod);
-            if (X.is_upper_triag(tol))
-                return X.diag();
-        }
-        return X.diag();
-    }
-template <class type, class prod>
     std::pair<matrix<double>, nvector<double>> eigen(matrix<type> a, prod inner_prod, int max_iter = 500, double tol = 1e-18){
         auto qr = qr_decomposition(a, inner_prod);
         matrix<double> previous(qr.first.N, qr.first.M);

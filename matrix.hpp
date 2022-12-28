@@ -22,6 +22,7 @@ template<class type>
             matrix operator+(matrix b);
             matrix operator-(matrix b);
             matrix operator*(matrix b);
+            matrix operator*(type b);
             nvector<type> operator*(nvector<type> b);
             matrix cofactor(int p, int q);
             type det();

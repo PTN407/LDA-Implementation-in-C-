@@ -47,6 +47,14 @@ template <class type>
         return res;
     };
 template <class type>
+    matrix<type> matrix<type>::operator*(type b){
+        matrix<type> res(this->N, this->M);
+        for (int i = 0; i < this->N; i++)
+            for (int j = 0; j < this->M; j++)
+                    res.mat[i][j] = this->mat[i][j] * b;
+        return res;
+    };
+template <class type>
     matrix<type> matrix<type>::T(){
         matrix<type> res(this->M, this->N);
         for (int i = 0; i < this->N; i++)
